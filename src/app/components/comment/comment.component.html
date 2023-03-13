@@ -1,0 +1,34 @@
+<div class="coment_content border-light fadeInDown" *ngFor="let comment of lstcomment">
+  <div class="card-header bg-transparent" style="display: flex;">
+    <img src="{{comment.avatar}}" alt="Byron" fallimg>
+    <h5>{{comment.nombre}}</h5>
+    <span class="letra_opaco" style="margin-left: auto;">Hace 2 horas</span>
+  </div>
+  <div class="card-body">
+    <span class="card-text" style="margin-left: 53px;">{{comment.comentario}}</span>
+    <div class="footer_coment">
+      <button (click)="sumarpuntos(comment)" type="button" class="btn btn-secondary rounded-circle boton_puntos"><i
+        class="bi bi-plus"></i></button>
+      <button (click)="restarpuntos(comment)" type="button" class="btn btn-secondary rounded-circle boton_puntos"><i
+        class="bi bi-dash"></i></button>
+      <span class="letra_opaco">{{comment.puntos}} puntos</span>
+      <button type="button" class="btn btn-outline-light border-0 " style="color: #0690cf"><i class="bi bi-reply-fill">
+        Respuesta</i>
+      </button>
+      <span class="letra_opaco"> {{comment.cant_respuestas}} Respuestas</span>
+      <!--      <a class="letra_opaco" *ngIf="comment.cant_respuestas > 0" style="margin-left: 15px;">Ver más..</a>-->
+      <button type="button" *ngIf="comment.cant_respuestas > 0" class="btn btn-link" style="color: #0690cf"
+              (click)="ver_respuestas(comment.id)">Ver más..
+      </button>
+    </div>
+  </div>
+
+  <div style="margin-left: 50px;" *ngIf="comment.respuestas">
+    <app-comment [lstcomment]="comment.respuestas"></app-comment>
+  </div>
+
+</div>
+
+
+
+

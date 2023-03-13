@@ -1,0 +1,38 @@
+<div>
+  <div class="wrapperDiscussion fadeIn">
+
+    <div class="DiscussionBody">
+
+
+      <div>
+        <form class="DiscussionReplyForm" autocomplete="off" [formGroup]="frmMessage" (ngSubmit)="enviar()">
+        <textarea name="description" placeholder="Escribe tu pregunta"
+                  minlength="5" class="DiscussionReplyForm-area"
+                  formControlName="description"
+                  [class.is-invalid]="descriptionFieldInvalid"></textarea>
+
+          <input type="submit" value="Enviar" class="DiscussionReplyForm-submit">
+        </form>
+        <ng-container *ngIf="descriptionFieldInvalid">
+          <small class="text-danger" *ngIf="description.hasError('required')">
+            La descripción es requerida
+          </small>
+          <small class="text-danger" *ngIf="description.errors?.minlength">
+            Debe tener más de 5 caracteres
+          </small>
+        </ng-container>
+      </div>
+
+      <div class="Discussion-list">
+        <app-comment [lstcomment]="comments"></app-comment>
+      </div>
+
+      <footer class="DiscussionFooter">
+        <span class="saludo">Hi </span>
+        <span class="user">{{usuario}}</span>
+        <img src="{{avatar}}" alt="Byron" fallimg>
+      </footer>
+    </div>
+
+  </div>
+</div>

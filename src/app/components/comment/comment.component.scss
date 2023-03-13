@@ -1,0 +1,47 @@
+img {
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-right: .5em;
+}
+
+h5 {
+  color: #0690cf;
+  font-size: 15px;
+  font-weight: bold;
+  align-self: center;
+}
+
+.letra_opaco {
+  align-self: center;
+  color: #808080;
+  font-size: 15px;
+}
+
+.boton_puntos {
+  text-align: center;
+  margin-right: 4px;
+  display: block;
+  width: 25px;
+  height: 25px;
+  padding: 0px 4px;
+}
+
+.footer_coment {
+  display: flex;
+  align-items: center;
+  margin-left: 53px;
+}
+
+.coment_content {
+  padding-bottom: 35px;
+}
+
+//.boton_puntos {
+//  padding: 0px 4px;
+//  border-radius: 19px;
+//  text-align: center;
+//  margin-right: 4px;
+//  display: block;
+//}

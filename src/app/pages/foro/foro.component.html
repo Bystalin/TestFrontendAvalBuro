@@ -1,0 +1,42 @@
+<div class="contenedor">
+  <div class="wrapper fadeInDown">
+
+    <!--  Form -->
+    <form autocomplete="off" [formGroup]="frmLogin" (ngSubmit)="ingresar()">
+      <div class="form-group">
+        <label for="name">¿Cuál es tu nombre?</label>
+        <input type="text" id="name" class="form-control fadeIn second" name="name"
+               placeholder="Escriba su nombre"
+               minlength="5"
+               formControlName="name"
+               [class.is-invalid]="nameFieldInvalid">
+        <ng-container *ngIf="nameFieldInvalid">
+          <br>
+          <small class="text-danger" *ngIf="name.hasError('required')">
+            Nombre es requerido
+          </small>
+          <small class="text-danger" *ngIf="name.hasError('pattern')">
+            Nombre invalido
+          </small>
+        </ng-container>
+      </div>
+
+
+      <div class="form-group">
+        <label for="urlavatar">Pega una URL de imagen para tu avatar</label>
+        <input type="text" id="urlavatar" class="form-control fadeIn third"
+               name="urlavatar"
+               placeholder="ejemplo : https://pbs.twimg.com/profile_images/480073396072742912/h6VGOhH6.jpeg"
+               formControlName="urlavatar">
+
+      </div>
+
+      <input type="submit"
+             class="fadeIn fourth"
+             value="INGRESAR">
+
+    </form>
+
+
+  </div>
+</div>
