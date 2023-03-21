@@ -16,6 +16,7 @@ export interface RequestComents {
   idcomentario: number;
   avatar: string;
   respuestas?: RequestComents[];
+  templaterespuesta?: true;
 }
 
 export interface Coments {

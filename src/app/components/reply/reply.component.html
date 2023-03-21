@@ -1,0 +1,18 @@
+<div>
+  <form class="DiscussionReplyForm" autocomplete="off" [formGroup]="frmReplyMessage" (ngSubmit)="responder()">
+        <textarea name="description" placeholder="Añade tu respuesta"
+                  minlength="5" class="DiscussionReplyForm-area"
+                  formControlName="description"
+                  [class.is-invalid]="descriptionFieldInvalid"></textarea>
+
+    <input type="submit" value="Enviar" class="DiscussionReplyForm-submit">
+  </form>
+  <ng-container *ngIf="descriptionFieldInvalid">
+    <small class="text-danger" *ngIf="description.hasError('required')">
+      La descripción es requerida
+    </small>
+    <small class="text-danger" *ngIf="description.errors?.minlength">
+      Debe tener más de 5 caracteres
+    </small>
+  </ng-container>
+</div>

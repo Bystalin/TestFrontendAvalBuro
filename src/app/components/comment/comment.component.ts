@@ -11,11 +11,13 @@ import {ForoService} from "../../services/foro.service";
 export class CommentComponent implements OnInit {
 
   @Input() lstcomment!: RequestComents[];
+  mostrarrespuesta!: boolean;
 
   constructor(private foroS: ForoService) {
   }
 
   ngOnInit(): void {
+    this.mostrarrespuesta = false;
   }
 
   sumarpuntos(comment: RequestComents) {
@@ -51,6 +53,18 @@ export class CommentComponent implements OnInit {
 
       })
 
+
+  }
+
+  responder(idcomentario: number) {
+    this.mostrarrespuesta = true;
+    this.lstcomment.map(function (dato) {
+      if (dato.id == idcomentario) {
+        // @ts-ignore
+        dato.templaterespuesta = true;
+      }
+      return dato;
+    });
 
   }
 }

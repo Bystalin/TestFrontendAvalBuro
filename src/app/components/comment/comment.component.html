@@ -12,7 +12,8 @@
       <button (click)="restarpuntos(comment)" type="button" class="btn btn-secondary rounded-circle boton_puntos"><i
         class="bi bi-dash"></i></button>
       <span class="letra_opaco">{{comment.puntos}} puntos</span>
-      <button type="button" class="btn btn-outline-light border-0 " style="color: #0690cf"><i class="bi bi-reply-fill">
+      <button type="button" class="btn btn-outline-light border-0 " (click)="responder(comment.id)" style="color: #0690cf"><i
+        class="bi bi-reply-fill">
         Respuesta</i>
       </button>
       <span class="letra_opaco"> {{comment.cant_respuestas}} Respuestas</span>
@@ -23,8 +24,12 @@
     </div>
   </div>
 
-  <div style="margin-left: 50px;" *ngIf="comment.respuestas">
+  <div style="margin-left: 50px;margin-top: 10px;" *ngIf="comment.respuestas">
     <app-comment [lstcomment]="comment.respuestas"></app-comment>
+  </div>
+
+  <div style="margin-left: 50px;margin-top: 10px;" *ngIf="comment.templaterespuesta">
+    <app-reply [idcomentario]="comment.id"></app-reply>
   </div>
 
 </div>

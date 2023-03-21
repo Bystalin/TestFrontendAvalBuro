@@ -9,13 +9,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CommentComponent} from './components/comment/comment.component';
 import {HttpClientModule} from "@angular/common/http";
 import {NgFallimgModule} from "ng-fallimg";
+import { ReplyComponent } from './components/reply/reply.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ForoComponent,
     DiscussionsComponent,
-    CommentComponent
+    CommentComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,
