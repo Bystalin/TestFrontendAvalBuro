@@ -5,31 +5,57 @@
     <span class="letra_opaco" style="margin-left: auto;">Hace 2 horas</span>
   </div>
   <div class="card-body">
-    <span class="card-text" style="margin-left: 53px;">{{comment.comentario}}</span>
+    <div style="margin-left: 53px;">
+      <span class="card-text" >{{comment.comentario}}</span>
+    </div>
     <div class="footer_coment">
       <button (click)="sumarpuntos(comment)" type="button" class="btn btn-secondary rounded-circle boton_puntos"><i
         class="bi bi-plus"></i></button>
       <button (click)="restarpuntos(comment)" type="button" class="btn btn-secondary rounded-circle boton_puntos"><i
         class="bi bi-dash"></i></button>
       <span class="letra_opaco">{{comment.puntos}} puntos</span>
-      <button type="button" class="btn btn-outline-light border-0 " (click)="responder(comment.id)" style="color: #0690cf"><i
+      <button type="button" class="btn btn-outline-light border-0 " (click)="responder(comment.id)"
+              style="color: #0690cf"><i
         class="bi bi-reply-fill">
         Respuesta</i>
       </button>
       <span class="letra_opaco"> {{comment.cant_respuestas}} Respuestas</span>
-      <!--      <a class="letra_opaco" *ngIf="comment.cant_respuestas > 0" style="margin-left: 15px;">Ver más..</a>-->
       <button type="button" *ngIf="comment.cant_respuestas > 0" class="btn btn-link" style="color: #0690cf"
               (click)="ver_respuestas(comment.id)">Ver más..
       </button>
     </div>
   </div>
 
+  <!--  MOSTRAR RESPUESTAS-->
+
   <div style="margin-left: 50px;margin-top: 10px;" *ngIf="comment.respuestas">
     <app-comment [lstcomment]="comment.respuestas"></app-comment>
   </div>
 
+  <!--  ENVIAR RESPUESTA-->
+
   <div style="margin-left: 50px;margin-top: 10px;" *ngIf="comment.templaterespuesta">
-    <app-reply [idcomentario]="comment.id"></app-reply>
+    <!--    <app-reply [idcomentario]="comment.id" [lstcomment]="lstcomment"></app-reply>-->
+    <div>
+      <form class="DiscussionReplyForm" autocomplete="off" [formGroup]="frmReplyMessage"
+            (ngSubmit)="enviar_respuesta(comment, comment.id)">
+        <textarea name="description" placeholder="Añade tu respuesta"
+                  minlength="5" class="DiscussionReplyForm-area"
+                  formControlName="description"
+                  [class.is-invalid]="descriptionFieldInvalid"></textarea>
+
+        <input type="submit" value="Enviar" class="DiscussionReplyForm-submit">
+      </form>
+      <ng-container *ngIf="descriptionFieldInvalid">
+        <small class="text-danger" *ngIf="description.hasError('required')">
+          La descripción es requerida
+        </small>
+        <small class="text-danger" *ngIf="description.errors?.minlength">
+          Debe tener más de 5 caracteres
+        </small>
+      </ng-container>
+    </div>
+
   </div>
 
 </div>

@@ -24,6 +24,7 @@ export class DiscussionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.cargar_avatar();
     if (localStorage.getItem('usuario')) {
       // @ts-ignore
